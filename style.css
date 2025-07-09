@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Manrope", sans-serif;
+  color: var(--text-color);
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+:root {
+  --base-color: royalblue;
+  --text-color: #2c2c2c;
+}
+
+.toast {
+  background-color: hsl(from var(--base-color) h s calc(l) / 1);
+  color: hsl(from var(--base-color) h s calc(l + 40));
+  padding: 10px 20px;
+  border-radius: 150px;
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 0.9rem;
+  transition: 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.toast.invisible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(from var(--base-color) h s calc(l - 50));
+}
+
+.quote-container {
+  width: 40%;
+  box-shadow: 0 0 12px #00000026;
+  border-radius: 20px;
+  /* padding: 30px 20px; */
+  overflow: hidden;
+  background-color: hsl(from var(--base-color) h s calc(l + 50));
+  position: relative;
+}
+
+.quote-container h2 {
+  background-color: var(--base-color);
+  padding: 10px 0;
+  text-align: center;
+  color: hsl(from var(--base-color) h s calc(l + 50));
+}
+
+.quote-container .content {
+  padding: 60px 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.quote-container .content .quote {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+.quote-container .content .author {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  font-style: italic;
+  align-self: flex-end;
+}
+
+.quote-container .content .generate-btn {
+  border: none;
+  background-color: hsl(from var(--base-color) h s calc(l));
+  color: hsl(from var(--base-color) h s calc(l + 50));
+  padding: 10px 20px;
+  border-radius: 3rem;
+  cursor: pointer;
+}
+
+.quote-container .features {
+  position: absolute;
+  top: 4rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.quote-container .features button {
+  width: 35px;
+  height: 35px;
+  background-color: hsl(from var(--base-color) h s l);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.quote-container .features button i {
+  color: hsl(from var(--base-color) h s calc(l + 50));
+}
