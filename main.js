@@ -4,6 +4,10 @@ const generatebtn = document.querySelector(".generate-btn");
 const favoritebtn = document.querySelector(".favorite-btn");
 const toast = document.querySelector(".toast");
 
+// stop -- i want to stop excution here
+console.log(toast);
+
+
 let currentQuote = null;
 let array = JSON.parse(localStorage.getItem("quotes")) || [];
 
@@ -39,13 +43,22 @@ const generateQuote = async (url) => {
 
     quote.innerHTML = `${data.quotes[random].quote}`;
     author.innerHTML = `~${data.quotes[random].author}`;
+
+    iconsControl(favoritebtn, "fa-solid", "fa-regular");
   } catch (error) {
     console.error("there is error in generateQuote", error);
   }
 };
 
+// icons control
+const iconsControl = (ele, oldClass, newClass) => {
+  ele.children[0].classList.replace(oldClass, newClass);
+};
+
 // save favorite quote in localstorage
 const saveToLocalStorage = () => {
+  iconsControl(favoritebtn, "fa-regular", "fa-solid");
+
   if (currentQuote == null) {
     return showMessage("there is no quote to save, please generate first");
   }
@@ -65,6 +78,18 @@ const saveToLocalStorage = () => {
   array.push(currentQuote);
   localStorage.setItem("quotes", JSON.stringify(array));
 };
+
+const clipBoard = async (text) => {
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch (error) {
+    console.error(error.message);
+  }
+};
+
+setTimeout(() => {
+  clipBoard("Copy");
+}, 2000);
 
 // generate quote on click
 generatebtn.addEventListener("click", () => {
